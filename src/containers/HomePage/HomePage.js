@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import HomeHeader from "./Header/HomeHeader";
 import Banner from "./Banner/Banner";
+import "slick-carousel/slick/slick.css";
+import "./HomePage.scss";
 import Specialty from "./Specialty/Specialty";
 import MedicalFacility from "./MedicalFacility/MedicalFacility";
 import OutstandingDoctor from "./OutstandingDoctor/OutstandingDoctor";
 import HandBook from "./HandBook/HandBook";
-
-import "slick-carousel/slick/slick.css";
-import "./HomePage.scss";
+import About from "./About/About";
+import Footer from "../Footer/Footer";
 
 function SamplePrevArrow(props) {
   const { className, onClick } = props;
@@ -17,7 +18,6 @@ function SamplePrevArrow(props) {
     </button>
   );
 }
-
 function SampleNextArrow(props) {
   const { className, onClick } = props;
   return (
@@ -46,6 +46,8 @@ export default class HomePage extends Component {
         <MedicalFacility settings={settings} />
         <OutstandingDoctor settings={settings} />
         <HandBook settings={settings} />
+        <About></About>
+        <Footer></Footer>
       </>
     );
   }
