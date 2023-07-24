@@ -1,5 +1,11 @@
 .home-header-container {
-  height: 60px;
+  height: 65px;
+  background: white;
+  position: sticky;
+  top: 0;
+  max-width: 100vw;
+  z-index: 10;
+  padding: 0 100px;
 
   .home-header-content {
     width: 100%;
@@ -21,7 +27,7 @@
         font-size: 25px;
         color: grey;
         cursor: pointer;
-        margin-right: 8px;
+        margin-right: 25px;
       }
     }
 

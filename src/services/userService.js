@@ -20,3 +20,7 @@ export const deleteUserService = (id) => {
 export const editUserService = (user) => {
   return axios.put("/api/edit-user", user);
 };
+
+export const getAllSpecialtyService = () => {
+  return axios.get(`/api/get-all-specialty`);
+};
