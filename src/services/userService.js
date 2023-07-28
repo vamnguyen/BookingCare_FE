@@ -21,6 +21,10 @@ export const editUserService = (user) => {
   return axios.put("/api/edit-user", user);
 };
 
+export const getAllCodeService = (inputType) => {
+  return axios.get(`/api/allcode?type=${inputType}`);
+};
+
 export const getAllSpecialtyService = () => {
   return axios.get(`/api/get-all-specialty`);
 };

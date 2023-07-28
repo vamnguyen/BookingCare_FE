@@ -10,13 +10,13 @@
   padding: 8px;
 }
 
-#customers tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+// #customers tr:nth-child(even) {
+//   background-color: #f2f2f2;
+// }
 
-#customers tr:hover {
-  background-color: #ddd;
-}
+// #customers tr:hover {
+//   background-color: #ddd;
+// }
 
 #customers th {
   padding-top: 12px;
@@ -27,11 +27,12 @@
 }
 
 .btn-edit {
-  width: 50px;
+  width: 30px;
   border: none;
   outline: none;
   background: transparent;
   color: orange;
+  margin-right: 10px;
 
   &:hover {
     background-color: transparent;
@@ -40,11 +41,12 @@
 }
 
 .btn-delete {
-  width: 50px;
+  width: 30px;
   border: none;
   outline: none;
   background: transparent;
   color: red;
+  margin-left: 10px;
 
   &:hover {
     background-color: transparent;
