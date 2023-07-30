@@ -106,9 +106,8 @@ export const createNewUserApi = (data) => {
   return async (dispatch) => {
     try {
       let res = await createNewUserService(data);
-      console.log("check create user redux: ", res);
       if (res && res.errCode === 0) {
-        toast.success("Create a new user succeed!");
+        toast.success("Create a new user successfully!");
         dispatch(saveUserSuccess());
         dispatch(getAllUserApi());
       } else {
@@ -158,9 +157,8 @@ export const deleteUserApi = (id) => {
   return async (dispatch) => {
     try {
       let res = await deleteUserService(id);
-      console.log("check delete user redux: ", res);
       if (res && res.errCode === 0) {
-        toast.success("Delete user succeed!");
+        toast.success("Delete user successfully!");
         dispatch(deleteUserSuccess());
         dispatch(getAllUserApi());
       } else {

@@ -6,7 +6,7 @@ import "react-image-lightbox/style.css";
 import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from "../../../utils";
 import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
-// import TableManageUser from "./TableManageUser";
+import TableManageUser from "./TableManageUser";
 
 class UserRedux extends Component {
   constructor(props) {
@@ -145,6 +145,7 @@ class UserRedux extends Component {
     if (user.image) {
       imageBase64 = new Buffer(user.image, "base64").toString("binary");
     }
+
     this.setState({
       email: user.email,
       password: "HARDCODE",
@@ -177,6 +178,7 @@ class UserRedux extends Component {
       position,
     } = this.state;
     const { language, genders, positions, roles, isLoadingGender } = this.props;
+
     return (
       <div className="user-redux-container">
         <div className="title">User Redux</div>
@@ -272,7 +274,7 @@ class UserRedux extends Component {
                     value={gender}
                     onChange={(e) => this.handleOnchangeInput(e, "gender")}
                   >
-                    <option selected>Choose...</option>
+                    <option value="DEFAULT">Choose...</option>
                     {genders?.map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
@@ -293,7 +295,7 @@ class UserRedux extends Component {
                     value={position}
                     onChange={(e) => this.handleOnchangeInput(e, "position")}
                   >
-                    <option selected>Choose...</option>;
+                    <option value="DEFAULT">Choose...</option>;
                     {positions?.map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
@@ -314,7 +316,7 @@ class UserRedux extends Component {
                     value={role}
                     onChange={(e) => this.handleOnchangeInput(e, "role")}
                   >
-                    <option selected>Choose...</option>
+                    <option value="DEFAULT">Choose...</option>
                     {roles?.map((item, index) => {
                       return (
                         <option key={index} value={item.keyMap}>
@@ -346,7 +348,7 @@ class UserRedux extends Component {
                     {previewImgURL && (
                       <div
                         className="preview-image"
-                        style={{ backgroundImage: `url(${previewImgURL})` }}
+                        style={{ backgroundImage: `url("${previewImgURL}")` }}
                         onClick={() => {
                           this.openPreviewImage();
                         }}
@@ -372,11 +374,11 @@ class UserRedux extends Component {
                   </button>
                 </div>
               </form>
-              {/* <div className="col-12 mb-5">
+              <div className="col-12 mb-5">
                 <TableManageUser
                   handleEditUserFromParent={this.handleEditUserFromParent}
                 />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
