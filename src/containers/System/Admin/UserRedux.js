@@ -143,7 +143,7 @@ class UserRedux extends Component {
   handleEditUserFromParent = (user) => {
     let imageBase64 = "";
     if (user.image) {
-      imageBase64 = new Buffer(user.image, "base64").toString("binary");
+      imageBase64 = Buffer.from(user.image, "base64").toString("binary");
     }
 
     this.setState({
@@ -275,15 +275,16 @@ class UserRedux extends Component {
                     onChange={(e) => this.handleOnchangeInput(e, "gender")}
                   >
                     <option value="DEFAULT">Choose...</option>
-                    {genders?.map((item, index) => {
-                      return (
-                        <option key={index} value={item.keyMap}>
-                          {language === LANGUAGES.VI
-                            ? item.valueVi
-                            : item.valueEn}
-                        </option>
-                      );
-                    })}
+                    {genders.length > 0 &&
+                      genders.map((item, index) => {
+                        return (
+                          <option key={index} value={item.key}>
+                            {language === LANGUAGES.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        );
+                      })}
                   </select>
                 </div>
                 <div className="col-md-3">
@@ -296,15 +297,16 @@ class UserRedux extends Component {
                     onChange={(e) => this.handleOnchangeInput(e, "position")}
                   >
                     <option value="DEFAULT">Choose...</option>;
-                    {positions?.map((item, index) => {
-                      return (
-                        <option key={index} value={item.keyMap}>
-                          {language === LANGUAGES.VI
-                            ? item.valueVi
-                            : item.valueEn}
-                        </option>
-                      );
-                    })}
+                    {positions.length > 0 &&
+                      positions.map((item, index) => {
+                        return (
+                          <option key={index} value={item.key}>
+                            {language === LANGUAGES.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        );
+                      })}
                   </select>
                 </div>
                 <div className="col-md-3">
@@ -317,15 +319,16 @@ class UserRedux extends Component {
                     onChange={(e) => this.handleOnchangeInput(e, "role")}
                   >
                     <option value="DEFAULT">Choose...</option>
-                    {roles?.map((item, index) => {
-                      return (
-                        <option key={index} value={item.keyMap}>
-                          {language === LANGUAGES.VI
-                            ? item.valueVi
-                            : item.valueEn}
-                        </option>
-                      );
-                    })}
+                    {roles.length > 0 &&
+                      roles.map((item, index) => {
+                        return (
+                          <option key={index} value={item.key}>
+                            {language === LANGUAGES.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        );
+                      })}
                   </select>
                 </div>
                 <div className="col-3">

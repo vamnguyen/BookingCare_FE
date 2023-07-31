@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-// import * as actions from '../../../store/actions';
+import * as actions from "../../../store/actions";
 import { LANGUAGES } from "../../../utils";
 import "./OutstandingDoctor.scss";
 
@@ -13,7 +13,7 @@ class OutstandingDoctor extends Component {
     this.state = {};
   }
   componentDidMount() {
-    // this.props.getTopDoctors();
+    this.props.getTopDoctors();
   }
   render() {
     const { topDoctors, language } = this.props;
@@ -30,34 +30,35 @@ class OutstandingDoctor extends Component {
           </div>
           <div className="section-content">
             <Slider {...this.props.settings}>
-              {topDoctors?.map((doctor, index) => {
-                let imageBase64 = "";
-                if (doctor.image) {
-                  imageBase64 = new Buffer(doctor.image, "base64").toString(
-                    "binary"
+              {topDoctors.length > 0 &&
+                topDoctors.map((doctor, index) => {
+                  let imageBase64 = "";
+                  if (doctor.image) {
+                    imageBase64 = Buffer.from(doctor.image, "base64").toString(
+                      "binary"
+                    );
+                  }
+                  let nameVi = `${doctor.positionData.valueVi}, ${doctor.lastName} ${doctor.firstName}`;
+                  let nameEn = `${doctor.positionData.valueEn}, ${doctor.firstName} ${doctor.lastName}`;
+                  return (
+                    <Link
+                      to={`/detail-doctor/${doctor.id}`}
+                      className="section-item"
+                      key={index}
+                    >
+                      <div className="outer-bg">
+                        <div
+                          className="bg-img section-outstanding-doctor"
+                          style={{ backgroundImage: `url(${imageBase64})` }}
+                        />
+                      </div>
+                      <div className="position text-center">
+                        <h3>{language === LANGUAGES.VI ? nameVi : nameEn}</h3>
+                        <p>Cơ xương khớp</p>
+                      </div>
+                    </Link>
                   );
-                }
-                let nameVi = `${doctor.positionData.valueVi}, ${doctor.lastName} ${doctor.firstName}`;
-                let nameEn = `${doctor.positionData.valueEn}, ${doctor.firstName} ${doctor.lastName}`;
-                return (
-                  <Link
-                    to={`/detail-doctor/${doctor.id}`}
-                    className="section-item"
-                    key={index}
-                  >
-                    <div className="outer-bg">
-                      <div
-                        className="bg-img section-outstanding-doctor"
-                        style={{ backgroundImage: `url(${imageBase64})` }}
-                      />
-                    </div>
-                    <div className="position text-center">
-                      <h3>{language === LANGUAGES.VI ? nameVi : nameEn}</h3>
-                      <p>Cơ xương khớp</p>
-                    </div>
-                  </Link>
-                );
-              })}
+                })}
             </Slider>
           </div>
         </div>
@@ -68,11 +69,11 @@ class OutstandingDoctor extends Component {
 
 const mapStateToProps = (state) => ({
   language: state.app.language,
-  // topDoctors: state.admin.topDoctors,
+  topDoctors: state.admin.topDoctors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // getTopDoctors: () => dispatch(actions.getTopDoctorsApi()),
+  getTopDoctors: () => dispatch(actions.getTopDoctorsApi()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);

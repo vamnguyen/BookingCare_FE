@@ -6,7 +6,7 @@ import {
   getAllUsers,
   deleteUserService,
   editUserService,
-  // getTopDoctorHomeService,
+  getTopDoctorHomeService,
   // getAllDoctorsService,
   // saveDetailDoctorService,
   // getDetailDoctorsService,
@@ -208,27 +208,27 @@ const editUserFailed = () => ({
 });
 
 // CRUD Doctor
-// export const getTopDoctorsApi = () => {
-//   return async (dispatch) => {
-//     try {
-//       let res = await getTopDoctorHomeService("");
-//       if (res && res.errCode === 0) {
-//         dispatch({
-//           type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
-//           payload: res.data,
-//         });
-//       } else {
-//         dispatch({
-//           type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
-//         });
-//       }
-//     } catch (e) {
-//       dispatch({
-//         type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
-//       });
-//     }
-//   };
-// };
+export const getTopDoctorsApi = () => {
+  return async (dispatch) => {
+    try {
+      let res = await getTopDoctorHomeService("");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
+      });
+    }
+  };
+};
 
 // export const getAllDoctorsApi = () => {
 //   return async (dispatch) => {
